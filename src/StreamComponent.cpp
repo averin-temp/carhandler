@@ -15,7 +15,7 @@ State state = State::STATE_STOPPED;
 std::string getCommandString()
 {
     // Запускаем ffmpeg через system() и сразу ставим в фоновый режим с &
-    return "ffmpeg -f v4l2 -i /dev/video0 -s 640x280 -b:v 1M -f rtsp -rtsp_transport udp -preset ultrafast -tune zerolatency -flush_packets 1 rtsp://localhost:8554/mystream";
+    return "ffmpeg -f v4l2 -i /dev/video10 -s 640x280 -b:v 1M -f rtsp -rtsp_transport udp -preset ultrafast -tune zerolatency -flush_packets 1 rtsp://localhost:8554/mystream";
 }
 
 
