@@ -79,5 +79,7 @@ void CarDriver::calibrate()
 {
     gpioServo(SERVO_PIN, SERVO_NONE);
     gpioServo(ENGINE_PIN, ENGINE_STOP);
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+    gpioDelay(3000000);
+    gpioServo(SERVO_PIN, 0);
+    gpioServo(ENGINE_PIN, 0);
 }
