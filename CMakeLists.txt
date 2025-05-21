@@ -35,3 +35,6 @@ add_executable( CarHandler
     src/CarDriver.cpp
     src/main.cpp
 )
+
+find_library(PIGPIO_LIB pigpio REQUIRED)
+target_link_libraries(CarHandler ${PIGPIO_LIB})
