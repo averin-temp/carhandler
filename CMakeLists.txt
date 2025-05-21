@@ -16,7 +16,6 @@ add_executable( CarHandler
     src/ConnectionListener.h
     src/constants.h
     src/ControlComponent.h
-    src/local_config.h
     src/MainComponent.h
     src/UdpBeacon.h
     src/UdpSocket.h
