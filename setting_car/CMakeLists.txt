@@ -11,4 +11,4 @@ add_executable( car_setup
 )
 
 find_library(PIGPIO_LIB pigpio REQUIRED)
-target_link_libraries(CarHandler ${PIGPIO_LIB})
+target_link_libraries(car_setup ${PIGPIO_LIB})

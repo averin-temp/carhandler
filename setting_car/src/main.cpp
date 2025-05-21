@@ -16,7 +16,6 @@ void update(){
     std::cout << "engine=" << engine << "  servo=" << servo << std::endl;
 }
 
-
 // Пример обработчиков команд
 void handleCommand(const std::string& cmd) {
     if (cmd == "hello") {
