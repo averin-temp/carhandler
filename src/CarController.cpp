@@ -1,10 +1,9 @@
 #include "CarController.h"
-#include "DummyCarDriver.h"
+#include "CarDriver.h"
 
 CarController::CarController()
 {
-    driver = new DummyCarDriver();
-    
+    driver = new CarDriver();
 }
 CarController::~CarController()
 {
