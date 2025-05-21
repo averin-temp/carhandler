@@ -10,5 +10,5 @@ make        // Сборка проекта
 sudo pigpiod  
 
 
-
-
+sudo ./CarHandler
+  ^  - это обязательно 
