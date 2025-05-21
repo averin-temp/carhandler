@@ -1,26 +1,28 @@
 #pragma once
+
 #include "ApplicationComponent.h"
-#include "TcpServer.h"
+#include "ConnectionListener.h"
 #include "Connection.h"
-#include "IStreamComponent.h"
-#include "IMainComponent.h"
 #include "AppState.h"
 
-class MainComponent : public ApplicationComponent, public IMainComponent
+class MainComponent : public ApplicationComponent
 {
+	enum class State{
+		STATE_WAITING_CONNECTION = 1,
+		STATE_CONNECTED = 2
+	};
 
-	AppState state = AppState::STATE_WAITING;
+	State state;
 	Connection* pConnection = nullptr;
-	TcpServer server;
+	ConnectionListener listener;
 
 	void processCommand(std::string);
-	IStreamComponent* pStreamer;
 public:
-	MainComponent(Application* pApp, IStreamComponent* streamer);
+	MainComponent(Application* pApp);
+	~MainComponent();
 	void create();
 	void destroy();
 	void run();
 	AppState getState();
-
 };
 

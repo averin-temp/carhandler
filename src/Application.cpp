@@ -6,6 +6,10 @@ Application::Application()
 {
 	running = false;
 
+	bool controlEnable = false;
+	bool beaconActive = false;
+	bool connectionEstablished = false;
+
 	std::cout << "Application::Application()" << std::endl;
 }
 
@@ -28,8 +32,6 @@ void Application::run()
 
 	try
 	{
-		
-
 		try
 		{
 			createComponents();

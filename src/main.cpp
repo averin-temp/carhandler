@@ -3,9 +3,11 @@
 
 #include <csignal>
 #include "Application.h"
-#include "StreamComponent.h"
-#include "BeaconComponent.h"
+#include "ControlComponent.h"
+
 #include "MainComponent.h"
+#include "BeaconComponent.h"
+
 
 Application* pApp = nullptr;
 
@@ -18,16 +20,18 @@ void signalHandler(int signum)
 
 int main()
 {
+    signal(SIGPIPE, SIG_IGN);
+    
     Application app;
     pApp = &app;
     signal(SIGINT, signalHandler);
 
-    StreamComponent* strCmp = new StreamComponent(pApp);
-    MainComponent* mainCmp = new MainComponent(pApp, strCmp);
-    BeaconComponent* beaconCmp = new BeaconComponent(pApp, mainCmp);
-
-    app.addComponent(beaconCmp);
-    app.addComponent(mainCmp);
-    app.addComponent(strCmp);
+    app.controlEnable = true;
+    MainComponent m(pApp);
+    BeaconComponent b(pApp);
+    app.addComponent(&m);
+    app.addComponent(&b);
+    ControlComponent c(pApp);
+    app.addComponent(&c);
     app.run();
 }

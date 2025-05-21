@@ -1,10 +1,9 @@
 #pragma once
-#include <string>
 
 
-class Command
-{
-    public:
-        Command();
-        std::string command;
+struct Command {
+    char leftButton = 0;
+    char rightButton = 0;
+    char upButton = 0;
+    char downButton = 0;
 };

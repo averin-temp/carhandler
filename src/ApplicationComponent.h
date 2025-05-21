@@ -5,7 +5,7 @@ class Application;
 
 class ApplicationComponent
 {
-private:
+protected:
 	Application* application;
 public:
 	ApplicationComponent(Application* app);

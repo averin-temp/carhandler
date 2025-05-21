@@ -20,5 +20,9 @@ public:
 	void createComponents();
 	void runComponents();
 	void destroyComponents();
+
+	bool controlEnable;
+	bool beaconActive;
+	bool connectionEstablished;
 };
 

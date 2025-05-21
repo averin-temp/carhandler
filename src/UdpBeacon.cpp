@@ -55,7 +55,6 @@ void UdpBeacon::beaconThreadWorker()
     
     while (stop_thread_flag == false) 
     {
-
         const char* imessage = message.c_str();
         ssize_t sent = sendto(sock, imessage, strlen(imessage), 0, (sockaddr*)&addr, sizeof(addr));
         if (sent < 0) {
@@ -67,6 +66,8 @@ void UdpBeacon::beaconThreadWorker()
         std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 
+
+    std::cout << "BeaconComponent::threadWorker::socket closed\n";
     close(sock);
 
     thread_running_flag = false;
