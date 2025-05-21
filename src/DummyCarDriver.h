@@ -14,5 +14,6 @@ public:
     void commandTurnLeft();
     void commandTurnRight();
     void commandTurnCenter();
+    void calibrate();
 };
 

@@ -1,5 +1,6 @@
 #include "CarDriver.h"
 #include <pigpio.h>
+#include <thread>
 #include <iostream>
 
 
@@ -11,8 +12,8 @@
 #define ENGINE_BACKWARD 1279  // значение сигнала назад (мск)
 
 #define SERVO_LEFT 1560  // значение сигнала влево (мск)  (-70°)
+#define SERVO_NONE 1500  // значение сигнала прямо (0°)
 #define SERVO_RIGHT 800  // значение сигнала вправо (мск) (70°)
-#define SERVO_NONE 1200  // значение сигнала прямо (0°)
 
 
 CarDriver::CarDriver()
@@ -35,18 +36,21 @@ CarDriver::~CarDriver()
 void CarDriver::commandForward()
 {
     gpioServo(ENGINE_PIN, ENGINE_FORWARD);
+    std::cout << "\033[31mFORWARD ...\033[0m" << std::endl;
 }
 
 
 void CarDriver::commandBackward()
 {
     gpioServo(ENGINE_PIN, ENGINE_BACKWARD);
+    std::cout << "\033[31mBACK ...\033[0m" << std::endl;
 }
 
 
 void CarDriver::commandStop()
 {
     gpioServo(ENGINE_PIN, ENGINE_STOP);
+    std::cout << "\033[31mSTOP ...\033[0m" << std::endl;
 }
 
 
@@ -54,17 +58,26 @@ void CarDriver::commandStop()
 void CarDriver::commandTurnLeft()
 {
     gpioServo(SERVO_PIN, SERVO_LEFT);
+    std::cout << "\033[31mLEFT ...\033[0m" << std::endl;
 }
 
 void CarDriver::commandTurnRight()
 {
     gpioServo(SERVO_PIN, SERVO_RIGHT);
+    std::cout << "\033[31mRIGHT ...\033[0m" << std::endl;
 }
 
 
 void CarDriver::commandTurnCenter()
 {
     gpioServo(SERVO_PIN, SERVO_NONE);
+    std::cout << "\033[31mCENTER ...\033[0m" << std::endl;
 }
 
 
+void CarDriver::calibrate()
+{
+    gpioServo(SERVO_PIN, SERVO_NONE);
+    gpioServo(ENGINE_PIN, ENGINE_STOP);
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+}

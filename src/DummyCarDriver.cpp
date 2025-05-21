@@ -59,4 +59,9 @@ void DummyCarDriver::commandTurnCenter()
     std::cout << "\033[31m~commandTurnCenter ...\033[0m" << std::endl;
 }
 
+void DummyCarDriver::calibrate()
+{
+    std::cout << "\033[31mCalibrate ...\033[0m" << std::endl;
+}
+
 

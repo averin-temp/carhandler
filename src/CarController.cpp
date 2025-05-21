@@ -4,6 +4,7 @@
 CarController::CarController()
 {
     driver = new CarDriver();
+    driver->calibrate();
 }
 CarController::~CarController()
 {
